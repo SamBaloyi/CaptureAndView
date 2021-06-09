@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  personUrl : 'https://quintintest.azurewebsites.net/api',
+  addPerson : 'addPerson',
+  getPerson: 'getPersons',
+  deletePerson : 'deleteperson'
 };
 
 /*

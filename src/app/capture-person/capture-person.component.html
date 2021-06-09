@@ -1,0 +1,54 @@
+<h1>
+  {{title}}
+</h1>
+
+<form [hidden]="submitted" [formGroup]="profileForm" autocomplete="off">
+	<mat-form-field appearance="outline">
+		<mat-label>Name</mat-label>
+		<input formControlName="name" matInput placeholder="Enter your name" required>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Surname</mat-label>
+		<input formControlName="surname" matInput placeholder="Enter your surname" required>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Age</mat-label>
+		<input pattern="[0-9]*"formControlName="age" matInput placeholder="Enter your age" required>
+	</mat-form-field>
+
+	<mat-form-field appearance="outline">
+		<mat-label>Occupation</mat-label>
+		<input formControlName="occupation" matInput placeholder="What is your occupation" required>
+	</mat-form-field>
+
+  <button (click)="goBack()" mat-raised-button>Go to Home</button>
+
+  <button type="reset" mat-button color="warn" >Reset</button>
+  <button id='submitButton' [disabled]="!profileForm.valid" (click)="onSubmit()" mat-raised-button color="success">Save</button>
+</form>
+
+
+<div class="container" [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ profileForm.get('name').value }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Surname</div>
+    <div class="col-xs-9">{{ profileForm.get('surname').value }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Age</div>
+    <div class="col-xs-9">{{ profileForm.get('age').value }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Occupation</div>
+    <div class="col-xs-9">{{ profileForm.get('occupation').value }}</div>
+  </div>
+  <br>
+  <button mat-button color="primary" routerLink="/landing" >Go Home</button>
+  <button mat-button color="primary" routerLink="/view" (click)="submitted=false">Go to View</button>
+</div>
